@@ -1,9 +1,17 @@
 use core::panic;
 use std::process::Command;
 
+use std::thread;
+use std::time::Duration;
+
 use once_cell::sync::Lazy;
 use regex::Regex;
 use serde::Serialize;
+
+// oh my gosh I wrote all this code before discovering:
+// "Do NOT screenscrape this tool, we don't consider its output stable."
+
+static SCAN_TIME: u64 = 10; // seconds to wait for scan to complete
 
 #[derive(Serialize, Debug, Clone)]
 pub struct WifiBssid {
@@ -11,9 +19,9 @@ pub struct WifiBssid {
     pub bssid: String,    // a mac adddress for a specific SSID
     pub age: Option<u64>, // in milliseconds since last seen
     pub channel: Option<u8>,
-    pub frequency: u16,      // in MHz
-    pub phy: PhyType,    // physcial layer type, usually correlated with wifi versioning
-    pub rssi: i32, // Signal Strength, in dBm
+    pub frequency: u16, // in MHz
+    pub phy: PhyType,   // physcial layer type, usually correlated with wifi versioning
+    pub rssi: i32,      // Signal Strength, in dBm
 }
 
 #[derive(Serialize, Debug, Clone)]
@@ -28,11 +36,16 @@ pub enum PhyType {
 
 pub fn fetch_wifi_stats() -> Vec<WifiBssid> {
     println!("[WiFi] Running scan...");
-    let output = Command::new("sudo")
-        .args(&["iw", "dev", "wlan0", "scan"])
+    let _ = Command::new("sudo")
+        .args(&["iw", "dev", "wlan0", "scan", "trigger"])
         .output()
-        .expect("[WiFi] Failed to execute iw");
+        .expect("[WiFi] Failed to trigger scan - Is IW installed?"); // Wait 10 seconds for scan to complete 
 
+    thread::sleep(Duration::from_secs(SCAN_TIME)); // Dump the scan results 
+    let output = Command::new("sudo")
+        .args(&["iw", "dev", "wlan0", "scan", "dump"])
+        .output()
+        .expect("[WiFi] Failed to dump scan results");
     let stdout = String::from_utf8_lossy(&output.stdout);
 
     let re_bssid = Regex::new(r"^BSS ([0-9a-f:]{17})").unwrap(); // match for access point mac address
