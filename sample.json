@@ -1,0 +1,135 @@
+{
+    "items": [
+        {
+            "wifiAccessPoints": [
+                {
+                    "channel": 153,
+                    "frequency": 5765,
+                    "signalStrength": -44,
+                    "age": 47468974,
+                    "ssid": "Dragon",
+                    "macAddress": "82:27:f5:62:2b:4b",
+                    "wifiVersion": "802.11ax"
+                },
+                {
+                    "channel": 1,
+                    "frequency": 2412,
+                    "signalStrength": -58,
+                    "age": 47463979,
+                    "ssid": "BELL992",
+                    "macAddress": "52:6e:de:84:86:61",
+                    "wifiVersion": "802.11n"
+                },
+                {
+                    "channel": 8,
+                    "frequency": 2447,
+                    "signalStrength": -39,
+                    "age": 47464818,
+                    "ssid": "Dragon",
+                    "macAddress": "8a:27:f5:62:2b:4c",
+                    "wifiVersion": "802.11n"
+                },
+                {
+                    "channel": 6,
+                    "frequency": 2437,
+                    "signalStrength": -40,
+                    "age": 47465069,
+                    "ssid": "BELL992",
+                    "macAddress": "90:72:82:fe:4a:4e",
+                    "wifiVersion": "802.11n"
+                },
+                {
+                    "channel": 11,
+                    "frequency": 2462,
+                    "signalStrength": -74,
+                    "age": 47465236,
+                    "ssid": "woodsview",
+                    "macAddress": "18:e8:29:14:f9:c5",
+                    "wifiVersion": "802.11n"
+                }
+            ],
+            "timestamp": 1765766461924,
+            "position": {
+                "latitude": 43.7314251027435,
+                "longitude": -79.6074068442984,
+                "accuracy": 8.339372710622706,
+                "altitude": 169.93078694581095,
+                "altitudeAccuracy": 30,
+                "source": "gps"
+            },
+            "bluetoothBeacons": [
+                {
+                    "macAddress": "D0:B2:C5:02:F0:8F",
+                    "signalStrength": -84
+                },
+                {
+                    "name": "S18 75BC LE",
+                    "macAddress": "F3:33:95:F9:57:6C",
+                    "signalStrength": -57
+                },
+                {
+                    "macAddress": "46:A4:32:EB:5D:15",
+                    "signalStrength": -71
+                },
+                {
+                    "macAddress": "71:DB:6F:BC:50:CE",
+                    "signalStrength": -72
+                },
+                {
+                    "name": "Quest 3",
+                    "macAddress": "41:AB:CC:C1:85:65",
+                    "signalStrength": -54
+                },
+                {
+                    "macAddress": "66:2F:85:8B:1F:36",
+                    "signalStrength": -79
+                },
+                {
+                    "macAddress": "F1:95:DC:A5:2E:01",
+                    "signalStrength": -90
+                },
+                {
+                    "macAddress": "57:34:4F:F7:9A:7D",
+                    "signalStrength": -58
+                },
+                {
+                    "macAddress": "54:E8:DC:E9:21:7C",
+                    "signalStrength": -84
+                },
+                {
+                    "macAddress": "54:E6:56:FE:F1:EF",
+                    "signalStrength": -89
+                },
+                {
+                    "macAddress": "7F:BB:27:0F:2F:3C",
+                    "signalStrength": -77
+                },
+                {
+                    "macAddress": "61:96:DF:03:E4:78",
+                    "signalStrength": -91
+                },
+                {
+                    "macAddress": "69:8B:3A:BC:F7:8D",
+                    "signalStrength": -81
+                },
+                {
+                    "macAddress": "63:E2:4F:B7:EE:96",
+                    "signalStrength": -73
+                },
+                {
+                    "name": "LAP-V201S-WUS",
+                    "macAddress": "DC:06:75:B3:25:4A",
+                    "signalStrength": -56
+                },
+                {
+                    "macAddress": "4E:B4:3A:DD:29:4A",
+                    "signalStrength": -73
+                },
+                {
+                    "macAddress": "7B:CB:E0:57:C6:01",
+                    "signalStrength": -65
+                }
+            ]
+        }
+    ]
+}
