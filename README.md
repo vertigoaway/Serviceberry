@@ -1,6 +1,2 @@
 # Serviceberry
-An iOS utility for surveying and improving public geolocation data for databases supporting the MLS/Ichnaea API
-
-curl -s -X POST "https://api.beacondb.net/v1/geolocate" \
-     -H "Content-Type: application/json" \
-     -d @sample.json
+Serviceberry started as a project to improve the accuracy & coverage of geolocation databases, it does this by submitting anonyomous sensor & location data to a configured geolocation service. Serviceberry is designed to run on your mobile IOS device, while running a desktop app on either a local computer or laptop, using either Bluetooth or LAN connectivity. Currently, Serviceberry is only guaranteed to support [BeaconDB](https://beacondb.net/) and Linux computers.
