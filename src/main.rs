@@ -13,9 +13,11 @@ use tracing::Span;
 
 mod adapters;
 mod geosubmit;
+mod server;
 use serde::{Deserialize, Serialize};
 
 use crate::geosubmit::{SubmitError, assemble_geo_payload, items};
+use crate::server::bluetooth::ble_peripheral;
 
 const SCAN_DURATION_SECS: u64 = 10;
 const GEOSUBMIT_ENDPOINT: &str = "https://api.beacondb.net/v2/geosubmit";
@@ -54,6 +56,15 @@ async fn main() {
         &lan_ip.to_string(),
         port
     );
+
+    let (tx, rx) = tokio::sync::mpsc::unbounded_channel::<String>();
+
+    tokio::spawn(async move {
+        ble_peripheral(rx).await;
+    });
+
+    // Send test value to update characteristic
+    tx.send("Hello iOS".to_string()).unwrap();
 
     tracing_subscriber::fmt::init();
 
