@@ -8,7 +8,7 @@ use crate::config::{MDNS_SERVICE_TYPE, HTTP_SERVER_PORT};
 
 /// Register the mDNS service
 pub fn register_mdns_service(
-    hostname: &str,
+    instance_name: &str,
     lan_ip: IpAddr,
     version: &str,
     cert_fingerprint: &[u8; 32],
@@ -21,10 +21,12 @@ pub fn register_mdns_service(
         ("cert_fingerprint".into(), hex::encode(cert_fingerprint).into()),
     ]);
 
+    let url = String::from("serviceberry.local.");
+
     let service_info: ServiceInfo = ServiceInfo::new(
         &service_type, // Service you're running, ServiceBerry in this case
-        hostname, // pretty, human readable name for the device you're using
-        "serviceberry.local.", // actual mDNS url name you're broadcasting as / second level domain
+        instance_name, // pretty, human readable name for the device you're using
+        &url, // actual mDNS url name you're broadcasting as / second level domain
         lan_ip.to_string(),
         HTTP_SERVER_PORT,
         Some(properties),
@@ -33,10 +35,9 @@ pub fn register_mdns_service(
     let mdns = ServiceDaemon::new()?;
     mdns.register(service_info)?;
 
-   let mdns_name = format!("{}.local.", hostname);
     println!(
         "mDNS service published as '{}' at {}:{}",
-        mdns_name, lan_ip, HTTP_SERVER_PORT
+        url, lan_ip, HTTP_SERVER_PORT
     );
 
     Ok(mdns)
