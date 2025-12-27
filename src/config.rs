@@ -8,7 +8,7 @@ use std::{error::Error, fs, path::PathBuf};
 pub const SCAN_DURATION_SECS: u64 = 10;
 pub const GEOSUBMIT_ENDPOINT: &str = "https://api.beacondb.net/v2/geosubmit";
 pub const APP_USER_AGENT: &str = concat!(env!("CARGO_PKG_NAME"), "/", env!("CARGO_PKG_VERSION"));
-pub const MDNS_SERVICE_TYPE: &str = "Serviceberry";
+pub const MDNS_SERVICE_TYPE: &str = "serviceberry"; // no capitals
 pub const HTTP_SERVER_PORT: u16 = 8080;
 pub const DEFAULT_HOSTNAME: &str = "turtle";
 
