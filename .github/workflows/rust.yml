@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   CARGO_TERM_COLOR: always
@@ -14,25 +14,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-    - name: Install system dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y \
-          pkg-config \
-          libdbus-1-dev \
-          bluez \
-          libbluetooth-dev \
-          wireless-tools \
-          iw \
-          wpasupplicant \
-          avahi-daemon \
-          openssl \
-          libssl-dev
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y -qq \
+            pkg-config libdbus-1-dev bluez libbluetooth-dev \
+            wireless-tools iw wpasupplicant avahi-daemon \
+            openssl libssl-dev
 
-    - name: Build
-      run: cargo build --verbose
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          components: rust-src # Optional, helpful for some builds
 
-    - name: Run tests
-      run: cargo test --verbose
+      - name: Rust Cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Build
+        run: cargo build --verbose
+
+      - name: Run tests
+        run: cargo test --verbose
