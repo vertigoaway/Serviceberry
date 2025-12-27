@@ -41,4 +41,21 @@ sudo systemctl enable --now avahi-daemon
 ```
 
 ## Contributing
-Ensure you have the latest verison of [Rust](https://rust-lang.org/tools/install/) installed and have installed all the necessary system packages.
+
+Come contribute now
+
+### Quick Start
+
+1. Ensure you have the latest stable version of [Rust](https://rust-lang.org/tools/install/) installed
+2. Install all necessary system packages (see [System Requirements](#system-requirements))
+3. Fork and clone the repository
+4. Create a new branch for your changes
+5. Make your changes following our coding standards
+6. Run tests and linting: `cargo test && cargo fmt && cargo clippy`
+7. Submit a pull request
+
+For detailed contributing guidelines, please see [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+This project is licensed under the terms specified in the [LICENSE](LICENSE) file. 
